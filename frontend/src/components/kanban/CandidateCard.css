@@ -1,0 +1,26 @@
+.candidate-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  cursor: grab;
+}
+
+.candidate-card:active {
+  cursor: grabbing;
+}
+
+.candidate-card__name {
+  font-weight: 600;
+  color: #212529;
+}
+
+.candidate-card__score {
+  margin-top: 0.5rem;
+}
+
+.candidate-card__no-score {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
