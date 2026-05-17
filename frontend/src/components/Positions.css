@@ -7,7 +7,7 @@
 
 .positions-header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
   margin-bottom: 2rem;
 }
@@ -18,11 +18,17 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin-top: 0.15rem;
+  transition: color 0.2s ease;
 }
 
 .positions-header__back:hover {
   color: #0d6efd;
+}
+
+.positions-header__logo {
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
 }
 
 .positions-header__text {
@@ -134,10 +140,18 @@
 }
 
 .position-card__meta-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.9rem;
   font-weight: 500;
   color: #212529;
   margin: 0;
+}
+
+.position-card__meta-icon {
+  color: #6c757d;
+  flex-shrink: 0;
 }
 
 .position-card__badge {
@@ -190,4 +204,12 @@
 
 .position-card__actions .btn-outline-secondary {
   flex-shrink: 0;
+}
+
+.position-card__actions .btn {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
 }

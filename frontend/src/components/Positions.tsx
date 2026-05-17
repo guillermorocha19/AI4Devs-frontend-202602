@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from 'react-bootstrap-icons';
+import { ArrowLeft, Calendar3, Person } from 'react-bootstrap-icons';
 import { Card, Container, Row, Col, Form, Button } from 'react-bootstrap';
+import logo from '../assets/lti-logo.png';
 import { POSITIONS_MOCK, PositionMock } from '../data/positionsMock';
 import './Positions.css';
 
@@ -12,6 +13,20 @@ const STATUS_BADGE_CLASS: Record<PositionMock['status'], string> = {
   Borrador: 'position-card__badge--borrador',
 };
 
+const formatDeadline = (isoDate: string): string => {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  if (!year || !month || !day) {
+    return isoDate;
+  }
+
+  const date = new Date(year, month - 1, day);
+  return date.toLocaleDateString('es-ES', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
+};
+
 const Positions: React.FC = () => {
   return (
     <Container className="mt-5 positions-page">
@@ -19,6 +34,7 @@ const Positions: React.FC = () => {
         <Link to="/" className="positions-header__back" aria-label="Volver al dashboard">
           <ArrowLeft size={28} aria-hidden="true" />
         </Link>
+        <img src={logo} alt="LTI" className="positions-header__logo" />
         <div className="positions-header__text">
           <h1 className="positions-header__title">Posiciones</h1>
           <p className="positions-header__subtitle">Gestiona tus vacantes activas</p>
@@ -75,11 +91,17 @@ const Positions: React.FC = () => {
                 <dl className="position-card__meta">
                   <div className="position-card__meta-row">
                     <dt className="position-card__meta-label">Responsable</dt>
-                    <dd className="position-card__meta-value">{position.manager}</dd>
+                    <dd className="position-card__meta-value">
+                      <Person className="position-card__meta-icon" size={14} aria-hidden="true" />
+                      {position.manager}
+                    </dd>
                   </div>
                   <div className="position-card__meta-row">
                     <dt className="position-card__meta-label">Fecha límite</dt>
-                    <dd className="position-card__meta-value">{position.deadline}</dd>
+                    <dd className="position-card__meta-value">
+                      <Calendar3 className="position-card__meta-icon" size={14} aria-hidden="true" />
+                      {formatDeadline(position.deadline)}
+                    </dd>
                   </div>
                 </dl>
                 <span
