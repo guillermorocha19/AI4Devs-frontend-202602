@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'react-bootstrap-icons';
 import { Card, Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { POSITIONS_MOCK, PositionMock } from '../data/positionsMock';
 import './Positions.css';
@@ -14,7 +15,15 @@ const STATUS_BADGE_CLASS: Record<PositionMock['status'], string> = {
 const Positions: React.FC = () => {
   return (
     <Container className="mt-5 positions-page">
-      <h2 className="text-center mb-4">Posiciones</h2>
+      <header className="positions-header">
+        <Link to="/" className="positions-header__back" aria-label="Volver al dashboard">
+          <ArrowLeft size={28} aria-hidden="true" />
+        </Link>
+        <div className="positions-header__text">
+          <h1 className="positions-header__title">Posiciones</h1>
+          <p className="positions-header__subtitle">Gestiona tus vacantes activas</p>
+        </div>
+      </header>
       <div className="positions-filters">
         <Row>
           <Col xs={12} md={6} lg={3} className="positions-filters__field">
@@ -47,10 +56,10 @@ const Positions: React.FC = () => {
           </Col>
           <Col xs={12} md={6} lg={3} className="positions-filters__field">
             <Form.Label htmlFor="filter-manager" className="positions-filters__label">
-              Manager
+              Responsable
             </Form.Label>
             <Form.Control id="filter-manager" as="select">
-              <option value="">Manager</option>
+              <option value="">Todos</option>
               <option value="john_doe">John Doe</option>
               <option value="jane_smith">Jane Smith</option>
             </Form.Control>
@@ -63,11 +72,16 @@ const Positions: React.FC = () => {
             <Card className="position-card">
               <Card.Body>
                 <Card.Title className="position-card__title">{position.title}</Card.Title>
-                <Card.Text className="position-card__meta">
-                  <strong>Manager:</strong> {position.manager}
-                  <br />
-                  <strong>Deadline:</strong> {position.deadline}
-                </Card.Text>
+                <dl className="position-card__meta">
+                  <div className="position-card__meta-row">
+                    <dt className="position-card__meta-label">Responsable</dt>
+                    <dd className="position-card__meta-value">{position.manager}</dd>
+                  </div>
+                  <div className="position-card__meta-row">
+                    <dt className="position-card__meta-label">Fecha límite</dt>
+                    <dd className="position-card__meta-value">{position.deadline}</dd>
+                  </div>
+                </dl>
                 <span
                   className={`position-card__badge ${STATUS_BADGE_CLASS[position.status]}`}
                 >

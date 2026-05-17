@@ -1,12 +1,53 @@
 .positions-page {
-  padding-bottom: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2.5rem;
+}
+
+.positions-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.positions-header__back {
+  color: #212529;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.positions-header__back:hover {
+  color: #0d6efd;
+}
+
+.positions-header__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.positions-header__title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.positions-header__subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: #6c757d;
 }
 
 .positions-filters {
   background-color: #f8f9fa;
   border-radius: 8px;
   padding: 1.25rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   border: 1px solid #e9ecef;
 }
@@ -29,8 +70,15 @@
   }
 }
 
+.positions-filters .form-control:focus-visible,
+.positions-page .btn:focus-visible,
+.positions-header__back:focus-visible {
+  outline: 2px solid #0d6efd;
+  outline-offset: 2px;
+}
+
 .positions-list {
-  row-gap: 1.5rem;
+  row-gap: 2rem;
 }
 
 .position-card {
@@ -48,7 +96,7 @@
 }
 
 .position-card .card-body {
-  padding: 1.25rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -57,13 +105,39 @@
 .position-card__title {
   font-weight: 600;
   color: #212529;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .position-card__meta {
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.position-card__meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.5rem;
+  margin: 0;
+}
+
+.position-card__meta-label {
+  font-size: 0.8rem;
+  font-weight: 600;
   color: #6c757d;
+  margin: 0;
+}
+
+.position-card__meta-label::after {
+  content: ':';
+}
+
+.position-card__meta-value {
   font-size: 0.9rem;
-  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: #212529;
+  margin: 0;
 }
 
 .position-card__badge {
@@ -73,6 +147,7 @@
   padding: 0.35em 0.65em;
   border-radius: 6px;
   align-self: flex-start;
+  margin-bottom: 0.25rem;
 }
 
 .position-card__badge--abierto {
@@ -105,7 +180,7 @@
   align-items: center;
   gap: 0.75rem;
   margin-top: auto;
-  padding-top: 1rem;
+  padding-top: 1.25rem;
   border-top: 1px solid #e9ecef;
 }
 
